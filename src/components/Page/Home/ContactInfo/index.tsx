@@ -1,3 +1,4 @@
+'use client'
 import { emailIcon, phoneIcon } from '@/contants/icon'
 
 interface ContactInfoProps {
@@ -12,11 +13,15 @@ export default function ContactInfo({ phone_number, email }: ContactInfoProps) {
             <div className='flex flex-col gap-2'>
                 <div className='flex gap-1 items-center py-2 border-stone-200 border-b-[1px]'>
                     <div className='w-6 h-6 text-base-dark'>{phoneIcon}</div>
-                    <p className='text-base-dark'>{phone_number}</p>
+                    <a href={`tel:${phone_number}`} className='w-full inline-block'>
+                        <p className='text-base-dark'>{phone_number}</p>
+                    </a>
                 </div>
                 <div className='flex gap-4 items-center'>
                     <div className='w-4 h-4 text-base-dark'>{emailIcon}</div>
-                    <p className='text-base-dark'>{email}</p>
+                    <p className='text-base-dark' onClick={() => window.open(`mailto:${email}`)}>
+                        {email}
+                    </p>
                 </div>
             </div>
         </div>

@@ -14,7 +14,6 @@ export default function Information({ avatar_url, name, role }: InformationProps
     const [curIndexText, setCurIndexText] = useState(0)
     useEffect(() => {
         ;(async () => {
-            console.log('run')
             if (text === '') {
                 setText(generationText[curIndexText === generationText.length - 1 ? 0 : curIndexText + 1])
                 setCurIndexText(curIndexText === generationText.length -1 ? 0 : curIndexText + 1)
