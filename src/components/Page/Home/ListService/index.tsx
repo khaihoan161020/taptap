@@ -119,7 +119,7 @@ export default function ListService({ services }: ListServiceProps) {
         }
     }
     return (
-        <div className='flex flex-col'>
+        <div className={`flex flex-col ${toggleService.length > 0 ? 'mb-[40px]' : ''}`}>
             {services.length > 0 &&
                 services.map((service: serviceType, index: number) => <div key={index}>{renderService(service)}</div>)}
         </div>
