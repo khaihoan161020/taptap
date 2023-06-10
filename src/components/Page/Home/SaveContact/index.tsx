@@ -45,6 +45,8 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
         //   console.log('run',navigator.contacts )
         const supported = "contacts" in navigator && "ContactsManager" in window;
         console.log({supported})
+
+        alert(`supported: ${supported}`)
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
         //       navigator.contacts.save(contact, function () {
         //         console.log("Contact saved successfully");
