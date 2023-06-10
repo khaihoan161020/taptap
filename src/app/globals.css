@@ -29,15 +29,29 @@ body {
 .deep-shadow-blur {
   position: absolute;
   z-index: -99;
-  top: 40%;
-  left: -20%;
+  top: 0%;
+  left: 0%;
   width: 60%;
   height: 50%;
-
   background: rgb(11,1,177);
-  background: linear-gradient(0deg, rgba(115, 14, 3, 0.7) 0%, rgba(255, 0, 179, 0.5) 100%);
+  background: linear-gradient(0deg, rgba(115, 14, 3, 0.9) 0%, rgba(255, 0, 179, 0.8) 100%);
   transform: rotate(-50deg);
-  opacity: 0.5;
+  opacity: 0.8;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(160px);
+  animation: mymove 10s infinite;
+}
+@keyframes mymove {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  30% {
+    transform: translate(40%, 70%);
+  }
+  60% {
+    transform: translate(60%, -10%);
+  }
+  100% {
+    transform: translate(-40%, -50%);
+  }
 }

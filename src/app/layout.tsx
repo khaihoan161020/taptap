@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} relative bg-gradient-bg min-h-screen overflow-y-scroll`}>
+      <body className={`${inter.className} relative bg-gradient-bg max-h-screen overflow-y-scroll`}>
         {children}
         <div className='deep-shadow-blur'></div>
         <ToastContainerClient />
