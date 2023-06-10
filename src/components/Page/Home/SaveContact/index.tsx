@@ -55,10 +55,12 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
                     },
                     (error: any) => {
                         console.error('Failed to save contact:', error)
+                        alert(`error: ${JSON.stringify(error)}`)
                     }
                 )
             } else {
                 console.error('navigator.contacts API not supported.')
+                alert('some err')
             }
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
