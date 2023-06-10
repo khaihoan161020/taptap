@@ -26,8 +26,8 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
         alert(`supported ${supported}`)
         if (supported) {
             try {
-                const newContact = navigator.contacts.create(contact)
-                newContact.save(
+                navigator.contacts.save(
+                    contact,
                     () => {
                         console.log('Contact saved successfully!')
                         alert('ok')
