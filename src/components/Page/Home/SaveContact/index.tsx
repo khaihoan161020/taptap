@@ -42,7 +42,9 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
 
         let navigator: any = window.navigator
         const supported = "contacts" in navigator && "ContactsManager" in window;
+          console.log(supported,navigator )
 
+        alert(`supported ${supported}`)
         if (supported) {
             navigator.contacts.save(contact, function () {
                         console.log("Contact saved successfully");
