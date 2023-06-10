@@ -85,12 +85,9 @@ export default function Home() {
                     name={data.user_info.name}
                     role={data.user_info.role}
                 />
-                <div className='flex gap-2'>
-                    <div className='w-[300px]'>
-                        <SpotifyPlayer spotify_url={data.spotify_url} />
-                    </div>
-                    {/* <div className='w-6/12'></div> */}
-                </div>
+
+                <SpotifyPlayer spotify_url={data.spotify_url} />
+
                 <ContactInfo phone_number={data.phone_number} email={data.email} />
                 <ListService services={data.services} />
                 <SaveContact phone_number={data.phone_number} />
