@@ -46,8 +46,10 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
         if (supported) {
             navigator.contacts.save(contact, function () {
                         console.log("Contact saved successfully");
+                        alert('success')
                       }, function (error: any) {
                         console.error("Error saving contact: " + error);
+                        alert('fail')
                       });
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
