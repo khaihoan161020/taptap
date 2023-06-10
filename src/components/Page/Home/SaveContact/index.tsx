@@ -46,22 +46,17 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
 
         alert(`supported ${supported}`)
         if (supported) {
-            if (navigator.contacts && navigator.contacts.create) {
-                const newContact = navigator.contacts.create(contact)
-                newContact.save(
-                    () => {
-                        console.log('Contact saved successfully!')
-                        alert('ok')
-                    },
-                    (error: any) => {
-                        console.error('Failed to save contact:', error)
-                        alert(`error: ${JSON.stringify(error)}`)
-                    }
-                )
-            } else {
-                console.error('navigator.contacts API not supported.')
-                alert('some err')
-            }
+            const newContact = navigator.contacts.create(contact)
+            newContact.save(
+                () => {
+                    console.log('Contact saved successfully!')
+                    alert('ok')
+                },
+                (error: any) => {
+                    console.error('Failed to save contact:', error)
+                    alert(`error: ${JSON.stringify(error)}`)
+                }
+            )
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
         //       navigator.contacts.save(contact, function () {
