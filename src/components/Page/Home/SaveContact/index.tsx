@@ -4,55 +4,62 @@ import Button from '@/components/Button'
 export default function SaveContact({ phone_number }: { phone_number: string }) {
     const handleSaveContact = () => {
         var contact = {
-            displayName: "Melon Dusk",
+            displayName: 'Melon Dusk',
             phoneNumbers: [
-              {
-                type: "mobile",
-                value: "123-456-7890",
-                pref: true
-              }
+                {
+                    type: 'mobile',
+                    value: '123-456-7890',
+                    pref: true
+                }
             ],
             emails: [
-              {
-                type: "home",
-                value: "melon.dusk@xcorp.com"
-              }
+                {
+                    type: 'home',
+                    value: 'melon.dusk@xcorp.com'
+                }
             ],
             addresses: [
-              {
-                type: "home",
-                formatted: "123 Main St\nAnytown, USA 12345"
-              }
+                {
+                    type: 'home',
+                    formatted: '123 Main St\nAnytown, USA 12345'
+                }
             ],
             organizations: [
-              {
-                type: "work",
-                name: "XCorp Inc.",
-                title: "Undefined"
-              }
+                {
+                    type: 'work',
+                    name: 'XCorp Inc.',
+                    title: 'Undefined'
+                }
             ],
             urls: [
-              {
-                type: "home",
-                value: "https://www.xcorp.69"
-              }
+                {
+                    type: 'home',
+                    value: 'https://www.xcorp.69'
+                }
             ],
-            note: "Am I a note?"
-          };
+            note: 'Am I a note?'
+        }
 
         let navigator: any = window.navigator
-        const supported = "contacts" in navigator && "ContactsManager" in window;
-          console.log(supported,navigator )
+        const supported = 'contacts' in navigator && 'ContactsManager' in window
+        console.log(supported, navigator)
 
         alert(`supported ${supported}`)
         if (supported) {
-            const newContact = navigator.contacts.create(contact);
-            newContact.save(() => {
-              console.log("Contact saved successfully!");
-              alert('success')
-            }, (error: any) => {
-              console.error("Failed to save contact:", error);
-            });
+            if (navigator.contacts && navigator.contacts.create) {
+                const newContact = navigator.contacts.create(contact)
+                newContact.save(
+                    () => {
+                        console.log('Contact saved successfully!')
+                        alert('ok')
+                    },
+                    (error: any) => {
+                        console.error('Failed to save contact:', error)
+                    }
+                )
+            } else {
+                console.error('navigator.contacts API not supported.')
+            }
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
         //       navigator.contacts.save(contact, function () {
