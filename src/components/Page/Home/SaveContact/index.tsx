@@ -3,41 +3,20 @@ import Button from '@/components/Button'
 
 export default function SaveContact({ phone_number }: { phone_number: string }) {
     const handleSaveContact = () => {
-        var contact = {
-            displayName: 'Melon Dusk',
+        const contact = {
+            displayName: 'John Doe',
             phoneNumbers: [
                 {
-                    type: 'mobile',
-                    value: '123-456-7890',
-                    pref: true
+                    value: '+1234567890',
+                    type: 'mobile'
                 }
             ],
-            emails: [
+            emailAddresses: [
                 {
-                    type: 'home',
-                    value: 'melon.dusk@xcorp.com'
+                    value: 'johndoe@example.com',
+                    type: 'work'
                 }
-            ],
-            addresses: [
-                {
-                    type: 'home',
-                    formatted: '123 Main St\nAnytown, USA 12345'
-                }
-            ],
-            organizations: [
-                {
-                    type: 'work',
-                    name: 'XCorp Inc.',
-                    title: 'Undefined'
-                }
-            ],
-            urls: [
-                {
-                    type: 'home',
-                    value: 'https://www.xcorp.69'
-                }
-            ],
-            note: 'Am I a note?'
+            ]
         }
 
         let navigator: any = window.navigator
@@ -46,17 +25,21 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
 
         alert(`supported ${supported}`)
         if (supported) {
-            const newContact = navigator.contacts.create(contact)
-            newContact.save(
-                () => {
-                    console.log('Contact saved successfully!')
-                    alert('ok')
-                },
-                (error: any) => {
-                    console.error('Failed to save contact:', error)
-                    alert(`error: ${JSON.stringify(error)}`)
-                }
-            )
+            try {
+                const newContact = navigator.contacts.create(contact)
+                newContact.save(
+                    () => {
+                        console.log('Contact saved successfully!')
+                        alert('ok')
+                    },
+                    (error: any) => {
+                        console.error('Failed to save contact:', error)
+                        alert(`error: ${JSON.stringify(error)}`)
+                    }
+                )
+            } catch (error) {
+                alert(`error 2: ${JSON.stringify(error)}`)
+            }
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
         //       navigator.contacts.save(contact, function () {
