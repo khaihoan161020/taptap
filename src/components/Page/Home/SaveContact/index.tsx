@@ -38,7 +38,7 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
                     }
                 )
             } catch (error) {
-                alert(`error 2: ${JSON.stringify(error)}`)
+                alert(`error 2: ${error}`)
             }
         }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
