@@ -2,8 +2,9 @@ import ContactInfo from '@/components/Page/Home/ContactInfo'
 import Information from '@/components/Page/Home/Information'
 import ListService from '@/components/Page/Home/ListService'
 import SaveContact from '@/components/Page/Home/SaveContact'
-import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
+const SpotifyPlayer = dynamic(() => import('@/components/Page/Home/SpotifyPlayer'), {ssr: false})
 const data = {
     user_info: {
         avatar_url: 'https://res.cloudinary.com/dkyfnct6t/image/upload/v1686315450/taptap/b9c11909b20863563a19_ehblcj.jpg',
@@ -12,6 +13,7 @@ const data = {
     },
 	phone_number: '0703343323',
 	email: 'hoantk.se@gmail.com',
+	spotify_url: "https://open.spotify.com/track/3wPPWcVuinAU7dXcJXtCID?si=19f07045f25d42d6",
 	services: [
 		{
 			icon_url: 'https://res.cloudinary.com/dkyfnct6t/image/upload/v1686305879/taptap/480px-Facebook_f_logo__282021_29.svg_x1bmtn.png',
@@ -75,6 +77,7 @@ export default function Home() {
                     name={data.user_info.name}
                     role={data.user_info.role}
                 />
+				<SpotifyPlayer spotify_url={data.spotify_url}/>
 				<ContactInfo phone_number={data.phone_number} email={data.email} />
 				<ListService services={data.services}/>
 				<SaveContact phone_number={data.phone_number} />
