@@ -39,14 +39,17 @@ export default function SaveContact({ phone_number }: { phone_number: string }) 
             ],
             note: "Am I a note?"
           };
-        //   let navigator: any;
 
-        //   navigator = window.navigator;
-        //   console.log('run',navigator.contacts )
+        let navigator: any = window.navigator
         const supported = "contacts" in navigator && "ContactsManager" in window;
-        console.log({supported})
 
-        alert(`supported: ${supported}`)
+        if (supported) {
+            navigator.contacts.save(contact, function () {
+                        console.log("Contact saved successfully");
+                      }, function (error: any) {
+                        console.error("Error saving contact: " + error);
+                      });
+        }
         //   if (navigator && navigator?.contacts && navigator.contacts.create) {
         //       navigator.contacts.save(contact, function () {
         //         console.log("Contact saved successfully");
